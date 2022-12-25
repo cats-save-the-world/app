@@ -1,0 +1,16 @@
+.cat {
+  height: 50px;
+  width: 50px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("./assets/cat_idle.gif");
+}
+
+.running {
+  background-image: url("./assets/cat_running.gif");
+}
+
+.left {
+  transform: scale(-1, 1);
+}
