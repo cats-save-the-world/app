@@ -33,6 +33,7 @@ const GameView: FC = () => {
   return (
     <>
       {loaded && <Heading>cats, save the world!</Heading>}
+      {loaded && <Controls />}
       <motion.div
         className="origin-center absolute top-1/2 left-1/2"
         style={{
@@ -45,7 +46,6 @@ const GameView: FC = () => {
           <Cat />
         </div>
       </motion.div>
-      {loaded && <Controls />}
     </>
   );
 };

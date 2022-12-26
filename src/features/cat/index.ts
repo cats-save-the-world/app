@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CatDirectionEnum, CatStatusEnum } from "./enums";
-import { ICatState } from "./interfaces";
+import { CatDirectionEnum, CatStatusEnum } from "./types";
+import { ICatState } from "./types";
 
 const slice = createSlice({
   name: "cat",

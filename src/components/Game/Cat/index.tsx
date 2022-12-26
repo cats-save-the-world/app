@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { useSelector } from "react-redux";
 import style from "./style.module.css";
 import { StateType } from "../../../store/types";
-import { CatDirectionEnum, CatStatusEnum } from "../../../features/cat/enums";
+import { CatDirectionEnum, CatStatusEnum } from "../../../features/cat/types";
 
 const Cat: FC = () => {
   const degree = useSelector((state: StateType) => state.cat.degree);

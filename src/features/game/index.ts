@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IGameState } from "./interfaces";
+import { IGameState } from "./types";
 
 const slice = createSlice({
   name: "game",
