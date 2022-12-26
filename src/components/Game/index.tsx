@@ -38,7 +38,7 @@ const GameView: FC = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          <Heading>cats, save the planet!</Heading>
+          <Heading>cats, save the world!</Heading>
         </motion.div>
       )}
       <motion.div
