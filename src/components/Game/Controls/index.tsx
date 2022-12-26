@@ -1,6 +1,8 @@
 import { FC, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { MobileView } from "react-device-detect";
 import { changeSpeed, changeDegree } from "../../../features/cat";
+import Button from "./Button";
 
 const INTERVAL = 100;
 
@@ -49,18 +51,12 @@ const Controls: FC = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 grid grid-cols-2">
-      <div
-        className="col-span-1"
-        onTouchStart={handleLeft}
-        onTouchEnd={handleStop}
-      ></div>
-      <div
-        className="col-span-1"
-        onTouchStart={handleRight}
-        onTouchEnd={handleStop}
-      ></div>
-    </div>
+    <MobileView>
+      <div className="fixed pb-4 px-4 h-[20vh] bottom-0 left-0 right-0 grid grid-cols-2 gap-4">
+        <Button onTouchStart={handleLeft} onTouchEnd={handleStop} left />
+        <Button onTouchStart={handleRight} onTouchEnd={handleStop} />
+      </div>
+    </MobileView>
   );
 };
 
