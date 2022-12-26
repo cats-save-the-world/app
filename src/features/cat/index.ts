@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CatDirectionEnum, CatStatusEnum } from "./enums";
 import { ICatState } from "./interfaces";
 
-const catSlice = createSlice({
+const slice = createSlice({
   name: "cat",
   initialState: {
     speed: 0,
@@ -31,5 +31,5 @@ const catSlice = createSlice({
   },
 });
 
-export const { changeSpeed, changeDegree } = catSlice.actions;
-export default catSlice.reducer;
+export const { changeSpeed, changeDegree } = slice.actions;
+export default slice.reducer;

@@ -1,8 +1,24 @@
 .layout {
   background-image: url("./background.png");
+  background-size: 400px;
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+  animation: background-slide 30s linear infinite;
+}
+
+.fast {
+  animation-duration: 10s;
+}
+
+@keyframes background-slide {
+  from {
+    background-position: 0;
+  }
+
+  to {
+    background-position: 2000px;
+  }
 }

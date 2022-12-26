@@ -1,13 +1,17 @@
 import { FC, useEffect, useState } from "react";
 import { motion, animate } from "framer-motion";
+import { useSelector, useDispatch } from "react-redux";
 import Heading from "./Heading";
 import Cat from "./Cat";
 import Planet from "./Planet";
 import Controls from "./Controls";
+import { StateType } from "../../store/types";
+import { setLoaded } from "../../features/game";
 
 const GameView: FC = () => {
+  const dispatch = useDispatch();
+  const loaded = useSelector((state: StateType) => state.game.loaded);
   const [animation, setAnimation] = useState<number>(0);
-  const [loaded, setLoaded] = useState<boolean>(false);
 
   useEffect(() => {
     animate(0, 100, {
@@ -17,7 +21,7 @@ const GameView: FC = () => {
         setAnimation(Math.trunc(latest));
       },
       onComplete: () => {
-        setLoaded(true);
+        dispatch(setLoaded());
       },
     });
   }, []);
