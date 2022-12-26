@@ -32,15 +32,7 @@ const GameView: FC = () => {
 
   return (
     <>
-      {loaded && (
-        <motion.div
-          initial={{ y: -100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-        >
-          <Heading>cats, save the world!</Heading>
-        </motion.div>
-      )}
+      {loaded && <Heading>cats, save the world!</Heading>}
       <motion.div
         className="origin-center absolute top-1/2 left-1/2"
         style={{

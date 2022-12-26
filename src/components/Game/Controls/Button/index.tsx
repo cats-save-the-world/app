@@ -9,13 +9,13 @@ interface IProps {
 }
 
 const Button: FC<IProps> = ({ onTouchStart, onTouchEnd, left }) => (
-  <div
+  <button
     className={classNames(style.button, {
       [style.left]: left,
     })}
     onTouchStart={onTouchStart}
     onTouchEnd={onTouchEnd}
-  ></div>
+  ></button>
 );
 
 export default Button;
