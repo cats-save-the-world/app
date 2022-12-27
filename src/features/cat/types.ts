@@ -8,9 +8,15 @@ export enum CatStatusEnum {
   running = "running",
 }
 
+export enum CatAccelerationEnum {
+  up = "up",
+  down = "down",
+}
+
 export interface ICatState {
   speed: number;
-  direction: CatDirectionEnum;
+  accelerationDirection: CatAccelerationEnum | null;
   degree: number;
   status: CatStatusEnum;
+  direction: CatDirectionEnum;
 }
