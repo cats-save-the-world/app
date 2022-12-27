@@ -36,6 +36,7 @@ const Cat: FC = () => {
       >
         <div
           className={classNames(style.cat, {
+            [style.walking]: status === CatStatusEnum.walking,
             [style.running]: status === CatStatusEnum.running,
             [style.left]: direction === CatDirectionEnum.left,
           })}

@@ -5,6 +5,7 @@ export enum CatDirectionEnum {
 
 export enum CatStatusEnum {
   idle = "idle",
+  walking = "walking",
   running = "running",
 }
 

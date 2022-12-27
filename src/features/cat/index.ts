@@ -39,6 +39,14 @@ const slice = createSlice({
           state.speed = Math.min(state.speed + BRAKING_SPEED, 0);
         }
       }
+
+      if (state.speed === 0) {
+        state.status = CatStatusEnum.idle;
+      } else if (Math.abs(state.speed) < 7) {
+        state.status = CatStatusEnum.walking;
+      } else {
+        state.status = CatStatusEnum.running;
+      }
     },
   },
 });
