@@ -2,27 +2,22 @@ import { FC, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import { MobileView } from "react-device-detect";
-import { updateCatLocation, move, stop } from "../../../features/cat";
+import { move, stop } from "../../../features/cat";
 import { CatDirectionEnum } from "../../../features/cat/types";
 import Button from "./Button";
-
-const INTERVAL = 100;
 
 const Controls: FC = () => {
   const dispatch = useDispatch();
 
   const handleLeft = () => {
-    // dispatch(changeSpeed(-1));
     dispatch(move(CatDirectionEnum.left));
   };
 
   const handleRight = () => {
-    // dispatch(changeSpeed(1));
     dispatch(move(CatDirectionEnum.right));
   };
 
   const handleStop = () => {
-    // dispatch(changeSpeed(0));
     dispatch(stop());
   };
 
@@ -45,14 +40,6 @@ const Controls: FC = () => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleStop);
     };
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      dispatch(updateCatLocation());
-    }, INTERVAL);
-
-    return () => clearInterval(interval);
   }, []);
 
   return (

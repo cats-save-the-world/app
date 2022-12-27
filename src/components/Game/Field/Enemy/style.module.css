@@ -1,0 +1,9 @@
+.enemy {
+  height: 50px;
+  width: 50px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("./laser.png");
+  transform: rotate(90deg);
+}

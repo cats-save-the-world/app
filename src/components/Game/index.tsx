@@ -2,8 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { motion, animate } from "framer-motion";
 import { useSelector, useDispatch } from "react-redux";
 import Heading from "./Heading";
-import Cat from "./Cat";
-import Planet from "./Planet";
+import Field from "./Field";
 import Controls from "./Controls";
 import { StateType } from "../../store/types";
 import { setLoaded } from "../../features/game";
@@ -33,7 +32,6 @@ const GameView: FC = () => {
   return (
     <>
       {loaded && <Heading>cats, save the world!</Heading>}
-      {loaded && <Controls />}
       <motion.div
         className="origin-center absolute top-1/2 left-1/2"
         style={{
@@ -41,11 +39,9 @@ const GameView: FC = () => {
           transform: `scale(${scale}) rotate(${rotate}deg) translate(-50%, -50%)`,
         }}
       >
-        <Planet />
-        <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
-          <Cat />
-        </div>
+        <Field />
       </motion.div>
+      {loaded && <Controls />}
     </>
   );
 };
