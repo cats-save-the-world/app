@@ -7,6 +7,10 @@
   background-image: url("./assets/cat_idle.gif");
 }
 
+.walking {
+  background-image: url("./assets/cat_walking.gif");
+}
+
 .running {
   background-image: url("./assets/cat_running.gif");
 }
