@@ -2,8 +2,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CatDirectionEnum, CatStatusEnum } from "./types";
 import { ICatState, CatAccelerationEnum } from "./types";
 
-const ACCELERATION_SPEED = 1;
-const BRAKING_SPEED = 2;
+const ACCELERATION_SPEED = 2;
+const BRAKING_SPEED = 1;
 const MAX_SPEED = 10;
 
 const slice = createSlice({
