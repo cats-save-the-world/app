@@ -1,17 +1,35 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IGameState } from "./types";
+import { CatStatusEnum, CatDirectionEnum } from "./types";
+import * as catReducers from "./reducers/cat";
+import * as enemyReducers from "./reducers/enemy";
 
 const slice = createSlice({
   name: "game",
   initialState: {
-    loaded: false,
+    cat: {
+      speed: 0,
+      accelerationDirection: null,
+      degree: 0,
+      status: CatStatusEnum.idle,
+      direction: CatDirectionEnum.right,
+      position: null,
+    },
+    enemies: [],
   },
   reducers: {
-    setLoaded(state: IGameState) {
-      state.loaded = true;
-    },
+    ...catReducers,
+    ...enemyReducers,
   },
 });
 
-export const { setLoaded } = slice.actions;
+export const {
+  move,
+  stop,
+  hit,
+  setCatPosition,
+  updateCatLocation,
+  spawnEnemy,
+  removeEnemy,
+  setEnemyPosition,
+} = slice.actions;
 export default slice.reducer;

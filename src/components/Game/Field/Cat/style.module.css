@@ -1,8 +1,8 @@
 .cat {
-  height: 50px;
-  width: 50px;
-  background-size: contain;
-  background-position: center;
+  height: 20px;
+  width: 20px;
+  background-size: 40px;
+  background-position: center 70%;
   background-repeat: no-repeat;
   background-image: url("./assets/cat_idle.gif");
 }
@@ -13,6 +13,10 @@
 
 .running {
   background-image: url("./assets/cat_running.gif");
+}
+
+.hitting {
+  background-image: url("./assets/cat_hitting.gif");
 }
 
 .left {

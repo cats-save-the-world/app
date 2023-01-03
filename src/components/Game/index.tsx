@@ -5,11 +5,11 @@ import Heading from "./Heading";
 import Field from "./Field";
 import Controls from "./Controls";
 import { StateType } from "../../store/types";
-import { setLoaded } from "../../features/game";
+import { setLoaded } from "../../features/app";
 
 const GameView: FC = () => {
   const dispatch = useDispatch();
-  const loaded = useSelector((state: StateType) => state.game.loaded);
+  const loaded = useSelector((state: StateType) => state.app.loaded);
   const [animation, setAnimation] = useState<number>(0);
 
   useEffect(() => {

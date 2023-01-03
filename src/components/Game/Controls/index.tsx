@@ -2,8 +2,8 @@ import { FC, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import { MobileView } from "react-device-detect";
-import { move, stop } from "../../../features/cat";
-import { CatDirectionEnum } from "../../../features/cat/types";
+import { move, stop } from "../../../features/game";
+import { CatDirectionEnum } from "../../../features/game/types";
 import Button from "./Button";
 
 const Controls: FC = () => {
