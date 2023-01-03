@@ -1,12 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import gameReducer from "../features/game";
-import catReducer from "../features/cat";
-import enemiesReducer from "../features/enemies";
+import app from "../features/app";
+import game from "../features/game";
 
 export default configureStore({
-  reducer: {
-    game: gameReducer,
-    cat: catReducer,
-    enemies: enemiesReducer,
-  },
+  reducer: { app, game },
 });

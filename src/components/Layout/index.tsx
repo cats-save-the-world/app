@@ -9,7 +9,7 @@ interface IProps {
 }
 
 const Layout: FC<IProps> = ({ children }) => {
-  const loaded = useSelector((state: StateType) => state.game.loaded);
+  const loaded = useSelector((state: StateType) => state.app.loaded);
 
   return (
     <div

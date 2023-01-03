@@ -1,14 +1,22 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState, useRef } from "react";
 import style from "./style.module.css";
 import { animate } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { removeEnemy, setEnemyPosition } from "../../../../features/game";
 
 interface IProps {
+  id: number;
   degree: number;
-  onRemove: () => void;
 }
 
-const Enemy: FC<IProps> = ({ degree, onRemove }) => {
+const Enemy: FC<IProps> = ({ id, degree }) => {
+  const dispatch = useDispatch();
+  const ref = useRef<HTMLDivElement>(null);
   const [distance, setDistance] = useState<number>(500);
+
+  const handleRemove = () => {
+    dispatch(removeEnemy(id));
+  };
 
   useEffect(() => {
     animate(500, 0, {
@@ -16,8 +24,15 @@ const Enemy: FC<IProps> = ({ degree, onRemove }) => {
       ease: "linear",
       onUpdate: (latest: number) => {
         setDistance(Math.trunc(latest));
+
+        if (!ref.current) return;
+
+        const { top, bottom, left, right } =
+          ref.current.getBoundingClientRect();
+
+        dispatch(setEnemyPosition([id, { top, bottom, left, right }]));
       },
-      onComplete: onRemove,
+      onComplete: handleRemove,
     });
   }, []);
 
@@ -30,7 +45,7 @@ const Enemy: FC<IProps> = ({ degree, onRemove }) => {
           paddingBottom: `calc(160px + ${distance}px)`,
         }}
       >
-        <div className={style.enemy}></div>
+        <div ref={ref} className={style.enemy}></div>
       </div>
     </div>
   );
