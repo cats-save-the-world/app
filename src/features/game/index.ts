@@ -14,7 +14,7 @@ const slice = createSlice({
       direction: CatDirectionEnum.right,
       position: null,
     },
-    enemies: [],
+    enemies: {},
   },
   reducers: {
     ...catReducers,

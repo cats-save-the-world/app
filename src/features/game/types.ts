@@ -31,13 +31,23 @@ export interface ICatState {
   position: IPosition | null;
 }
 
+export enum EnemyStatusEnum {
+  alive = "alive",
+  killed = "killed",
+}
+
 export interface IEnemy {
   id: number;
   degree: number;
   position: IPosition | null;
+  status: EnemyStatusEnum;
+}
+
+export interface IEnemies {
+  [id: string]: IEnemy;
 }
 
 export interface IGameState {
   cat: ICatState;
-  enemies: IEnemy[];
+  enemies: IEnemies;
 }
