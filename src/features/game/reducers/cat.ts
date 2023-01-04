@@ -21,7 +21,10 @@ const stop = (state: IGameState) => {
 };
 
 const hit = (state: IGameState) => {
-  state.cat.status = CatStatusEnum.hitting;
+  if (state.cat.status !== CatStatusEnum.hitting) {
+    state.cat.status = CatStatusEnum.hitting;
+    state.cat.speed = 0;
+  }
 };
 
 const setCatPosition = (

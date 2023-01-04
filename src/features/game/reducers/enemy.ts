@@ -1,7 +1,11 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import random from "lodash.random";
-import { IGameState, IPosition } from "../types";
+import { IGameState, IPosition, IEnemy } from "../types";
 import { hit } from "./cat";
+
+const _removeEnemyById = (enemies: IEnemy[], id: number) => {
+  return enemies.filter((enemy) => enemy.id !== id);
+};
 
 const spawnEnemy = (state: IGameState) => {
   const id = Date.now();
@@ -10,8 +14,7 @@ const spawnEnemy = (state: IGameState) => {
 };
 
 const removeEnemy = (state: IGameState, action: PayloadAction<number>) => {
-  const idx = state.enemies.map((enemy) => enemy.id).indexOf(action.payload);
-  state.enemies.splice(idx, 1);
+  state.enemies = _removeEnemyById(state.enemies, action.payload);
 };
 
 const setEnemyPosition = (
@@ -20,6 +23,9 @@ const setEnemyPosition = (
 ) => {
   const [id, position] = action.payload;
   const idx = state.enemies.map((enemy) => enemy.id).indexOf(id);
+
+  if (idx === -1) return;
+
   state.enemies[idx].position = position;
 
   if (!state.cat.position) return;
@@ -32,6 +38,7 @@ const setEnemyPosition = (
   if (state.cat.position.right < left) return;
 
   hit(state);
+  state.enemies = _removeEnemyById(state.enemies, id);
 };
 
 export { spawnEnemy, removeEnemy, setEnemyPosition };
