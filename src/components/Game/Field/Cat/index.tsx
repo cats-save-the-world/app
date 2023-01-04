@@ -9,6 +9,7 @@ import {
 } from "../../../../features/game/types";
 import { useDispatch } from "react-redux";
 import { setCatPosition, updateCatLocation } from "../../../../features/game";
+import { preloadImage } from "./helpers";
 
 const INTERVAL = 100;
 
@@ -25,6 +26,12 @@ const Cat: FC = () => {
     }, INTERVAL);
 
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    preloadImage("/src/components/Game/Field/Cat/assets/cat_walking.gif");
+    preloadImage("/src/components/Game/Field/Cat/assets/cat_running.gif");
+    preloadImage("/src/components/Game/Field/Cat/assets/cat_hitting.gif");
   }, []);
 
   useEffect(() => {
