@@ -4,6 +4,10 @@
   background-size: 30px;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url("./laser.png");
+  background-image: url("./assets/laser.png");
   transform: rotate(90deg);
+}
+
+.killed {
+  background-image: url("./assets/explosion.gif");
 }

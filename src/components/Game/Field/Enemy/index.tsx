@@ -1,11 +1,18 @@
 import { FC, useEffect, useState, useRef } from "react";
+import classNames from "classnames";
 import style from "./style.module.css";
 import { animate } from "framer-motion";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { removeEnemy, setEnemyPosition } from "../../../../features/game";
+import {
+  IEnemy,
+  IEnemies,
+  EnemyStatusEnum,
+} from "../../../../features/game/types";
+import { StateType } from "../../../../store/types";
 
 interface IProps {
-  id: number;
+  id: string;
   degree: number;
 }
 
@@ -13,6 +20,10 @@ const Enemy: FC<IProps> = ({ id, degree }) => {
   const dispatch = useDispatch();
   const ref = useRef<HTMLDivElement>(null);
   const [distance, setDistance] = useState<number>(500);
+  const enemy: IEnemy = useSelector((state: StateType) => {
+    const enemies: IEnemies = state.game.enemies;
+    return enemies[id];
+  });
 
   const handleRemove = () => {
     dispatch(removeEnemy(id));
@@ -45,7 +56,12 @@ const Enemy: FC<IProps> = ({ id, degree }) => {
           paddingBottom: `calc(160px + ${distance}px)`,
         }}
       >
-        <div ref={ref} className={style.enemy}></div>
+        <div
+          ref={ref}
+          className={classNames(style.enemy, {
+            [style.killed]: enemy.status === EnemyStatusEnum.killed,
+          })}
+        ></div>
       </div>
     </div>
   );

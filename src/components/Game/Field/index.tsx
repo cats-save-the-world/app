@@ -5,14 +5,16 @@ import Planet from "./Planet";
 import Cat from "./Cat";
 import Enemy from "./Enemy";
 import { spawnEnemy } from "../../../features/game";
-import { IEnemy } from "../../../features/game/types";
+import { IEnemies } from "../../../features/game/types";
 
 const ENEMY_SPAWN_INTERVAL = 5000;
 
 const Field: FC = () => {
   const dispatch = useDispatch();
   const loaded = useSelector((state: StateType) => state.app.loaded);
-  const enemies = useSelector((state: StateType) => state.game.enemies);
+  const enemies: IEnemies = useSelector(
+    (state: StateType) => state.game.enemies
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -27,8 +29,8 @@ const Field: FC = () => {
       <Planet />
       <Cat />
       {loaded &&
-        enemies.map((enemy: IEnemy) => (
-          <Enemy key={enemy.id} id={enemy.id} degree={enemy.degree} />
+        Object.keys(enemies).map((id: string) => (
+          <Enemy key={id} id={id} degree={enemies[id].degree} />
         ))}
     </>
   );
